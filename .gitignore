@@ -1,0 +1,4 @@
+results/*
+.ipynb_checkpoints
+workflow/logs/*
+.snakemake

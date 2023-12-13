@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -J "Dirty mouse virome pipeline test-AJ40"
+#SBATCH --nodes=1
+#SBATCH --ntasks=64
+#SBATCH --mem=400GB
+#SBATCH --time=2-00:00:00
+#SBATCH -M agate
+#SBATCH -p langlois-node1
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=sheph085@umn.edu
+
+source activate snakemake
+snakemake --cores 1 --unlock
+snakemake --cores 64 --rerun-incomplete --use-conda --configfile ../config/config.yaml

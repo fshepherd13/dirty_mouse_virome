@@ -1,0 +1,16 @@
+#Config file to accompany dirty mouse metagenomic/viral discovery snakemake pipeline for quantifying and classifying Trinity transcripts
+
+in_dir: /home/langlois/shared/UI_data_release/UMN_project018 #Directory containing raw fastq files from RNAseq
+ref_genome: /home/langlois/shared/ref_genomes/star_indices/mus_musculus #Location of indexed genome for STAR (done separately from this pipeline)
+
+sample_file: "../config/samples_aj40.csv"
+experiment: "aj40"
+
+trimmomatic: #Trimmomatic parameters
+    threads: 32
+    other: ILLUMINACLIP:../ref_files/all_illumina_adapters.fa:2:30:10  LEADING:10 TRAILING:10 SLIDINGWINDOW:4:30 MINLEN:38
+
+blast:
+    db: /home/langlois/shared/ref_dbs/ncbi_nt/ntandnovelseq
+    tax_nodes: /home/langlois/shared/ref_dbs/taxdump/nodes.dmp
+    tax_names: /home/langlois/shared/ref_dbs/taxdump/names.dmp
