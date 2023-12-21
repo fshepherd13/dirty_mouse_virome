@@ -58,7 +58,7 @@ In the metadata file (the path to which should be listed under the `sample_file`
 Use mamba to install snakemake. At UMN MSI, this is done with:
 ```
 module load mamba
-mamba env create -n snakemake -c bioconda snakemake
+mamba create -n snakemake -c bioconda snakemake
 conda activate snakemake
 ```
 
