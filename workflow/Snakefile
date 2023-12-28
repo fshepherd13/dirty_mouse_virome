@@ -21,5 +21,7 @@ include: "rules/summarise_transcripts.smk"
 
 rule all:
     input:
-        expand("../results/final/{exp}_sp_abundance.csv", exp=EXP),
-        expand("../results/final/{exp}_family_abundance.csv", exp=EXP)
+        expand("../results/final/{exp}_sp_tpm.csv", exp=EXP),
+        expand("../results/final/{exp}_family_tpm.csv", exp=EXP),
+        expand("../results/final/{exp}_sp_counts.csv", exp = EXP),
+        expand("../results/final/{exp}_family_counts.csv", exp = EXP)
