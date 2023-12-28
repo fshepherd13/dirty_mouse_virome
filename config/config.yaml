@@ -10,6 +10,9 @@ trimmomatic: #Trimmomatic parameters
     threads: 32
     other: ILLUMINACLIP:../ref_files/all_illumina_adapters.fa:2:30:10  LEADING:10 TRAILING:10 SLIDINGWINDOW:4:30 MINLEN:38
 
+trinity:
+    scratch_dir: /path/to/scratch/directory #Place to put Trinity intermediate files; should use your /scratch.global/x500 folder if using on MSI
+
 blast:
     db: /home/langlois/shared/ref_dbs/ncbi_nt/ntandnovelseq
     tax_nodes: /home/langlois/shared/ref_dbs/taxdump/nodes.dmp

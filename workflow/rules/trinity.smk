@@ -5,7 +5,7 @@ rule trinity:
     output:
         expand("../results/trinity/{exp}_unmapped_denovo_contigs.fasta", exp=EXP)
     params:
-        scratch=expand("/scratch.global/sheph085/trinity_{exp}", exp=EXP)
+        scratch=config["trinity"]["scratch_dir"]
     conda:
         "../envs/trinity.yml"
     log:
