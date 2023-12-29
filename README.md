@@ -6,7 +6,14 @@ Snakemake implementation of a pipeline for quantifying viral species and familie
 Raw reads from metagenomic sequencing. In our system, the experimental set up has one "dirty" pet store mouse cohoused with one to several clean laboratory mice in a single cage. To identify pathogens circulating in a cage, tissues from animals are harvested, RNA is extracted, and RNA sequencing is performed after polyA selection or rRNA depletion.
 
 ### Output
-The two main outputs are csv files that show estimated counts for the taxonomic (1) families and (2) species present in each mouse.
+The pipeline outputs 4 csv files under `results/final/`: 
+
+* Estimated read counts per sample at the family level
+* Estimated read counts per sample at the species level
+* Read abundance (in TPM) per sample at the family level
+* Read abundance (in TPM) per sample at the species level
+
+A csv file of the transcript lineages as determined by BLASTn. 
 
 ### Pipeline overview
 The pipeline works by first mapping RNAseq reads to a reference genome (shown here for mouse). Unmapped reads are then combined within a cage to perform a de novo assembly. Contigs < 500 bp are filtered from further analysis to improve accuracy of downstream counts. Taxonomic lineages of the resulting contigs are identified using BLASTn. The contigs are also used to create a reference index that the unmapped reads are then pseudomapped to the reference index with Salmon in order to identify the types/relative quantities of pathogens in the cage. Transcripts are quantified at the species and family level using Salmon and some data wrangling with help of tximport. The final output is the counts per family or species as estimated by tximport. These counts can be used for specific hypothesis testing (such as differential expression) with the help of DESeq or another package, but that is not covered here. 
